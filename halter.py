@@ -13,7 +13,7 @@ PORT = 59090
 ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
 VERSION = "2024.03.14.01"
 
-root_dir = sys.path[1]
+# root_dir = sys.path[1]
 c1 = crypt.crypt(".", "halter", "secret")
 SECRET = c1.decrypt()
 
