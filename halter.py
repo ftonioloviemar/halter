@@ -5,20 +5,30 @@ import sys
 import os
 import json
 import requests
+import logging
+from util.vielog import get_viemar_logger
 
-port = 59090
-allowed_sources = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
-version = "2024.01.30.04"
+PORT = 59090
+ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
+VERSION = "2024.03.14.01"
+SECRET = "abc123"
+
+# logging.basicConfig(
+#     level=logging.INFO,
+#     filename="halter.log",
+#     format="%(asctime)s - %(levelname)s - %(message)s",
+# )
+log = get_viemar_logger("log", "halter", logging.DEBUG, logging.INFO)
 
 
 class ServerHandler(socketserver.StreamRequestHandler):
     def handle(self):
         self.write_print(
-            f"Servidor Halter Versao {version} - Pronto para receber uma linha"
+            f"Servidor Halter Versao {VERSION} - Pronto para receber uma linha"
         )
         self.write_print(f"Conexao recebida de {self.client_address[0]}")
 
-        if self.client_address[0] not in allowed_sources:
+        if self.client_address[0] not in ALLOWED_SOURCES:
             self.write_print("Cliente nao permitido")
             return
 
@@ -26,7 +36,7 @@ class ServerHandler(socketserver.StreamRequestHandler):
         self.write_print(f"Linha recebida: {line}")
 
         msg = "Linha aceita. Executar halt"
-        if line != "abc123":
+        if line != SECRET:
             self.write_print("Linha rejeitada")
             return
 
@@ -41,7 +51,8 @@ class ServerHandler(socketserver.StreamRequestHandler):
         self.wfile.write(f"{text}\r\n".encode("utf-8"))
 
     def write_print(self, msg):
-        print(msg)
+        # print(msg)
+        log.info(msg)
         self.write(msg)
 
     def halt(self):
@@ -142,6 +153,6 @@ class ServerHandler(socketserver.StreamRequestHandler):
                 self.write_print("pular, teste")
 
 
-with socketserver.TCPServer(("", port), ServerHandler) as server:
-    print(f"Servidor escutando na porta TCP {port}")
+with socketserver.TCPServer(("", PORT), ServerHandler) as server:
+    print(f"Servidor escutando na porta TCP {PORT}")
     server.serve_forever()
