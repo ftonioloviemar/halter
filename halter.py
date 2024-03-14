@@ -6,7 +6,7 @@ import os
 import json
 import requests
 import logging
-from util.vielog import get_viemar_logger
+from vielog import get_viemar_logger
 
 PORT = 59090
 ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
