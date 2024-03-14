@@ -13,11 +13,6 @@ ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
 VERSION = "2024.03.14.01"
 SECRET = "abc123"
 
-# logging.basicConfig(
-#     level=logging.INFO,
-#     filename="halter.log",
-#     format="%(asctime)s - %(levelname)s - %(message)s",
-# )
 log = get_viemar_logger("log", "halter", logging.DEBUG, logging.INFO)
 
 
