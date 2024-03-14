@@ -7,16 +7,17 @@ import json
 import requests
 import logging
 from util.vielog import get_viemar_logger
-from util import crypt
 
 PORT = 59090
 ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
 VERSION = "2024.03.14.01"
+SECRET = "abc123"
 
-# root_dir = sys.path[1]
-c1 = crypt.crypt(".", "halter", "secret")
-SECRET = c1.decrypt()
-
+# logging.basicConfig(
+#     level=logging.INFO,
+#     filename="halter.log",
+#     format="%(asctime)s - %(levelname)s - %(message)s",
+# )
 log = get_viemar_logger("log", "halter", logging.DEBUG, logging.INFO)
 
 
@@ -57,7 +58,7 @@ class ServerHandler(socketserver.StreamRequestHandler):
     def halt(self):
         if sys.platform.startswith(
             "linux"
-        ):  # could be 'linux', 'linux2', 'linux3', ...
+        ):  # could be "linux", "linux2", "linux3", ...
             f = open("/etc/issue", "r")
             line = f.readline()
             f.close()
