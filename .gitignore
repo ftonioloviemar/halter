@@ -1,2 +1,5 @@
 .venv*
+./log/*
 *.log
+*.bin
+*.key
