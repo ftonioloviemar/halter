@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# chkconfig: 2345 90 60
+# description: servico para desligar o linux
+# processname: halter
+# pidfile: /var/run/halter.pid
+
+cd /opt/halter
+
+stop() {
+	killall halter.py
+	rm -f /var/run/halter.pid
+}
+
+start() {
+	#stop
+    nohup /opt/halter/halter.py > /dev/null 2>&1&
+    touch /var/run/halter.pid
+}
+
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        restart
+        ;;
+  *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+esac

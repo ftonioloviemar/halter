@@ -1,0 +1,13 @@
+#!/bin/sh
+ 
+. /etc/rc.subr
+ 
+name=halter
+rcvar=${name}_enable
+ 
+app_dir="/opt/${name}"
+command="/usr/sbin/daemon"
+command_args="-p /var/run/${name}.pid ${app_dir}/${name}.py"
+ 
+load_rc_config $name
+run_rc_command "$1"
