@@ -6,7 +6,8 @@ After=multi-user.target
 Type=simple
 Restart=always
 WorkingDirectory=/opt/halter
-ExecStart=/opt/halter/halter.sh
+#ExecStart=/opt/halter/halter.sh
+ExecStart=/opt/halter/halter.py
 
 [Install]
 WantedBy=multi-user.target
