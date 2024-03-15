@@ -12,8 +12,8 @@ echo halter_enable="YES" >> /etc/rc.conf
 #sed 's/<\/system>/<\/system>\n\t<shellcmd>service halter start<\/shellcmd>/' /conf/config.xml
 sed -i '' "s@3.11@3@" halter.py
 
-python3 -m ensurepip
-python3 -m pip install requests
+#python3 -m ensurepip
+#python3 -m pip install requests
 
 service halter start
 

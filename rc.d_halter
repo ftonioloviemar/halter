@@ -1,5 +1,7 @@
 #!/bin/sh
  
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin
+
 . /etc/rc.subr
  
 name=halter
