@@ -10,7 +10,7 @@ from vielog import get_viemar_logger
 
 PORT = 59090
 ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
-VERSION = "2024.03.15.01"
+VERSION = "2024.03.15.02"
 SECRET = "abc123"
 
 log = get_viemar_logger("log", "halter", logging.DEBUG, logging.INFO)
