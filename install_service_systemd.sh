@@ -5,6 +5,7 @@ source .venv_linux/bin/activate
 pip3 install -r requirements.txt
 chmod +x halter.py
 
+rm -f /etc/systemd/system/halter.service
 cp /opt/halter/halter.service /etc/systemd/system/
 #chmod +x halter.sh
 systemctl enable halter
