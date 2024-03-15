@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env -S python3
 
 import socketserver
 import sys
