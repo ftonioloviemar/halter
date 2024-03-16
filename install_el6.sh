@@ -1,15 +1,3 @@
-# cd /opt
-# rm -fdr halter
-
-#if ! command -v git  &> /dev/null
-#then
-#    echo "precisa instalar git"
-#    yum -y install git
-#fi
-
-# git clone https://ftonioloviemar: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@github.com/ftonioloviemar/halter.git
-# cd halter
-
 if ! command -v python3 &> /dev/null
 then
     echo "precisa instalar python3"
@@ -28,8 +16,6 @@ then
     popd
     popd
 fi
-
-
 
 # serviço
 rm -f /etc/init.d/halter
