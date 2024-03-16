@@ -1,5 +1,12 @@
 # cd /opt
 # rm -fdr halter
+
+#if ! command -v git  &> /dev/null
+#then
+#    echo "precisa instalar git"
+#    yum -y install git
+#fi
+
 # git clone https://ftonioloviemar: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@github.com/ftonioloviemar/halter.git
 # cd halter
 
@@ -17,17 +24,6 @@ then
     sudo ln -sfn /usr/local/bin/python3.6 /usr/bin/python3
     sudo ln -sfn /usr/local/bin/pip3.6 /usr/bin/pip3.6
     sudo ln -sfn /usr/local/bin/pip3.6 /usr/bin/pip3
-fi
-
-service halter stop
-cd /opt
-#mv halter halter_old
-rm -fdr halter
-
-if ! command -v git  &> /dev/null
-then
-    echo "precisa instalar git"
-    yum -y install git
 fi
 
 python3 -m venv .venv_linux
