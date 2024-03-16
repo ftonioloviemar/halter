@@ -1,11 +1,12 @@
 #scp -r -P 55323 root@silverado:/mnt/dados/dados/Ti/python/jupyter/halter /opt/
 
-cp /opt/halter/rc.d_halter /usr/local/etc/rc.d/halter
+rm -f /etc/rc.d/init.d/halter
+cp halter.service.centos6 /etc/rc.d/init.d/halter
 
-chmod 555 /usr/local/etc/rc.d/halter
-chmod +x /usr/local/etc/rc.d/halter
+chmod 555 /etc/rc.d/init.d/halter
+chmod +x /etc/rc.d/init.d/halter
 #chmod +x /opt/halter/halter.sh
-chmod +x /opt/halter/halter.py
+#chmod +x /opt/halter/halter.py
 
 echo halter_enable="YES" >> /etc/rc.conf
 #echo "service halter start" > /etc/rc.local
