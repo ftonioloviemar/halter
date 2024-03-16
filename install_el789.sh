@@ -15,11 +15,10 @@
 yum -y install https://repo.ius.io/ius-release-el$(rpm -E '%{rhel}').rpm
 #yum -y update
 yum -y install python3
-
 pip3 install --upgrade pip
 
 # checar versao
 python3 --version
 pip3 --version
 
-pip3 install requests
+#pip3 install requests

@@ -10,7 +10,7 @@
 # git clone https://ftonioloviemar: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@github.com/ftonioloviemar/halter.git
 # cd halter
 
-if ! command -v python3  &> /dev/null
+if ! command -v python3 &> /dev/null
 then
     echo "precisa instalar python3"
     yum -y install gcc openssl-devel bzip2-devel wget
@@ -24,21 +24,18 @@ then
     sudo ln -sfn /usr/local/bin/python3.6 /usr/bin/python3
     sudo ln -sfn /usr/local/bin/pip3.6 /usr/bin/pip3.6
     sudo ln -sfn /usr/local/bin/pip3.6 /usr/bin/pip3
+    pip3 install --upgrade pip
     popd
     popd
 fi
 
-python3 -m venv .venv_linux
-source .venv_linux/bin/activate
-pip3 install -r requirements.txt
-deactivate
-chmod +x halter.py
 
-#source ./install_service_rc_centos6.sh
+
+# serviço
 rm -f /etc/init.d/halter
-cp -f halter.service.centos6 /etc/init.d/halter
+cp  halter.service.centos6 /etc/init.d/halter
+chmod 555 /etc/init.d/halter
 chmod +x /etc/init.d/halter
 chkconfig halter on
+echo halter_enable="YES" >> /etc/rc.conf
 service halter start
-#service halter status
-#telnet localhost 59090
