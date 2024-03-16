@@ -14,16 +14,18 @@ if ! command -v python3  &> /dev/null
 then
     echo "precisa instalar python3"
     yum -y install gcc openssl-devel bzip2-devel wget
-    cd /tmp/
+    pushd /tmp/
     wget https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tgz
     tar xzf Python-3.6.6.tgz
-    cd Python-3.6.6
+    pushd Python-3.6.6
     ./configure --enable-optimizations
     sudo make altinstall
     sudo ln -sfn /usr/local/bin/python3.6 /usr/bin/python3.6
     sudo ln -sfn /usr/local/bin/python3.6 /usr/bin/python3
     sudo ln -sfn /usr/local/bin/pip3.6 /usr/bin/pip3.6
     sudo ln -sfn /usr/local/bin/pip3.6 /usr/bin/pip3
+    popd
+    popd
 fi
 
 python3 -m venv .venv_linux
@@ -38,5 +40,5 @@ cp -f halter.service.centos6 /etc/init.d/halter
 chmod +x /etc/init.d/halter
 chkconfig halter on
 service halter start
-service halter status
+#service halter status
 #telnet localhost 59090
