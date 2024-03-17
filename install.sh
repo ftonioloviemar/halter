@@ -23,6 +23,7 @@ case "$so" in
             ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
         elif command -v python3.11 &> /dev/null
         then
+            echo "detectado python 3.11, criar link para python3"
             ln -sf /usr/local/bin/python3.11 /usr/local/bin/python3
         fi
 

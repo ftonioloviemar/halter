@@ -1,6 +1,8 @@
 # usar o comando abaixo que dispara este script para instalar / atualizar
 # curl -s https://raw.githubusercontent.com/ftonioloviemar/halter/main/pre_install.sh | sh 
-# debian curl https://raw.githubusercontent.com/ftonioloviemar/halter/main/pre_install.sh -o /tmp/pre_install.sh & source /tmp/pre_install.sh
+
+# debian
+#curl https://raw.githubusercontent.com/ftonioloviemar/halter/main/pre_install.sh -o /tmp/pre_install.sh & source /tmp/pre_install.sh
 
 # para freebsd
 mkdir /opt
