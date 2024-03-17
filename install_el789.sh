@@ -12,13 +12,17 @@
 #LDFLAGS="${LDFLAGS} -Wl,-rpath=/usr/local/openssl/lib" ./configure --with-openssl=/usr/local/openssl 
 #make
 #make altinstall
-yum -y install https://repo.ius.io/ius-release-el$(rpm -E '%{rhel}').rpm
-#yum -y update
-yum -y install python3
-pip3 install --upgrade pip
 
-# checar versao
-python3 --version
-pip3 --version
+if ! command -v python3 &> /dev/null
+then
+    yum -y install https://repo.ius.io/ius-release-el$(rpm -E '%{rhel}').rpm
+    #yum -y update
+    yum -y install python3
+    pip3 install --upgrade pip
 
-#pip3 install requests
+    # checar versao
+    python3 --version
+    pip3 --version
+
+    #pip3 install requests
+fi

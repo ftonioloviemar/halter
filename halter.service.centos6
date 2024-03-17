@@ -6,32 +6,32 @@
 # pidfile: /var/run/halter.pid
 
 stop() {
-	killall -g halter.sh
-	rm -f /var/run/halter.pid
+      killall -g halter.sh
+      rm -f /var/run/halter.pid
 }
 
 start() {
-	#stop
-    nohup /opt/halter/halter.sh > /dev/null 2>&1&
-    touch /var/run/halter.pid
+      #stop
+      nohup /opt/halter/halter.sh > /dev/null 2>&1&
+      touch /var/run/halter.pid
 }
 
 restart() {
-    stop
-    start
+      stop
+      start
 }
 
 case "$1" in
-  start)
-        start
-        ;;
-  stop)
-        stop
-        ;;
-  restart)
-        restart
-        ;;
-  *)
-        echo $"Usage: $0 {start|stop|restart}"
-        exit 1
+      start)
+            start
+            ;;
+      stop)
+            stop
+            ;;
+      restart)
+            restart
+            ;;
+      *)
+            echo $"Usage: $0 {start|stop|restart}"
+            exit 1
 esac
