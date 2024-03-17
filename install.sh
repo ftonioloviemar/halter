@@ -1,5 +1,8 @@
 so=$(uname -a | tr '[:upper:]' '[:lower:]')
+
 cd /opt/halter
+chmod +x halter.py
+
 case "$so" in
     *"debian"* )
         echo "debian"
