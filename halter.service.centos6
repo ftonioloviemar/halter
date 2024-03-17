@@ -5,16 +5,14 @@
 # processname: halter
 # pidfile: /var/run/halter.pid
 
-cd /opt/halter
-
 stop() {
-	killall halter.py
+	killall -g halter.sh
 	rm -f /var/run/halter.pid
 }
 
 start() {
 	#stop
-    nohup /opt/halter/halter.py > /dev/null 2>&1&
+    nohup /opt/halter/halter.sh > /dev/null 2>&1&
     touch /var/run/halter.pid
 }
 
