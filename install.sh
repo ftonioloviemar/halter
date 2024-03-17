@@ -4,41 +4,53 @@ case "$so" in
     *"debian"* )
         echo "debian"
         # presumir que já tem python 3.6 ou superior instalado
-        source config_venv.sh
-        source install_service_systemd.sh
+        ./config_venv.sh
+        ./install_service_systemd.sh
         ;;
     *"truenas"* )
         echo "truenas"
-        source config_venv.sh
-        #source install_truenas.sh
+        ./config_venv.sh
+        #./install_truenas.sh
         ;;
     *"pfsense"* )
         echo "pfsense"
-        source config_venv_pfsense.sh
-        source install_service_rc.sh
+
+        if command -v python3.8 &> /dev/null
+        then
+            ln -sf /usr/local/bin/python3.8 /usr/local/bin/python3
+        elif command -v python3.11 &> /dev/null
+        then
+            ln -sf /usr/local/bin/python3.11 /usr/local/bin/python3
+        fi
+
+        python3 -m ensurepip
+
+        ./config_venv_pfsense.sh
+        #./install_service_rc.sh
+        ./install_service_pfsense
         ;;
     *"el6"* )
         echo "el6"
-        source install_el6.sh
-        source config_venv.sh
+        ./install_el6.sh
+        ./config_venv.sh
         ;;
     *"el7"* )
         echo "el7"
-        source install_el789.sh
-        source config_venv.sh
-        source install_service_systemd.sh
+        ./install_el789.sh
+        ./config_venv.sh
+        ./install_service_systemd.sh
         ;;
     *"el8"* )
         echo "el8"
-        source install_el789.sh
-        source config_venv.sh
-        source install_service_systemd.sh
+        ./install_el789.sh
+        ./config_venv.sh
+        ./install_service_systemd.sh
         ;;
     *"el9"* )
         echo "el9"
-        source install_el789.sh
-        source config_venv.sh
-        source install_service_systemd.sh
+        ./install_el789.sh
+        ./config_venv.sh
+        ./install_service_systemd.sh
         ;;
     * )
         echo "Sistema operacional não previsto"
