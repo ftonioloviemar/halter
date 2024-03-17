@@ -1,17 +1,17 @@
-function debian() {
+function debian {
     echo "debian"
     # presumir que já tem python 3.6 ou superior instalado
     ./config_venv.sh
     ./install_service_systemd.sh
 }
 
-function truenas() {
+function truenas {
     echo "truenas"
     ./config_venv.sh
     #./install_truenas.sh
 }
 
-function pfsense() {
+function pfsense {
     echo "pfsense"
 
     if command -v python3.8 &> /dev/null
@@ -29,13 +29,13 @@ function pfsense() {
     ./install_service_pfsense
 }
 
-function el6() {
+function el6 {
     echo "el6"
     ./install_el6.sh
     ./config_venv.sh
 }
 
-function el789() {
+function el789 {
     ./install_el789.sh
     ./config_venv.sh
     ./install_service_systemd.sh
