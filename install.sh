@@ -1,5 +1,5 @@
 so=$(uname -a | tr '[:upper:]' '[:lower:]')
-
+cd /opt/halter
 case "$so" in
     *"debian"* )
         echo "debian"
