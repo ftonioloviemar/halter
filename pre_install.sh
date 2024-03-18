@@ -2,7 +2,7 @@
 # curl -s https://raw.githubusercontent.com/ftonioloviemar/halter/main/pre_install.sh | sh 
 
 # debian
-#curl https://raw.githubusercontent.com/ftonioloviemar/halter/main/pre_install.sh -o /tmp/pre_install.sh & source /tmp/pre_install.sh
+#curl https://raw.githubusercontent.com/ftonioloviemar/halter/main/pre_install.sh -o /tmp/pre_install.sh ; source /tmp/pre_install.sh
 
 # para freebsd
 mkdir /opt
