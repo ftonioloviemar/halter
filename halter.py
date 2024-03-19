@@ -10,7 +10,7 @@ from vielog import get_viemar_logger
 
 PORT = 59090
 ALLOWED_SOURCES = ["127.0.0.1", "10.0.1.7", "10.0.1.13"]
-VERSION = "2024.03.15.03"
+VERSION = "2024.03.19.01"
 SECRET = "abc123"
 
 log = get_viemar_logger("log", "halter", logging.DEBUG, logging.INFO)
@@ -151,8 +151,12 @@ class ServerHandler(socketserver.StreamRequestHandler):
                 self.write_print("pular, teste")
 
 
+class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    pass
+
+
 def main():
-    with socketserver.TCPServer(("", PORT), ServerHandler) as server:
+    with ThreadedTCPServer(("", PORT), ServerHandler) as server:
         print(f"Servidor escutando na porta TCP {PORT}")
         server.serve_forever()
 
