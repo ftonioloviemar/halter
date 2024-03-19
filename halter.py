@@ -151,6 +151,11 @@ class ServerHandler(socketserver.StreamRequestHandler):
                 self.write_print("pular, teste")
 
 
-with socketserver.TCPServer(("", PORT), ServerHandler) as server:
-    print(f"Servidor escutando na porta TCP {PORT}")
-    server.serve_forever()
+def main():
+    with socketserver.TCPServer(("", PORT), ServerHandler) as server:
+        print(f"Servidor escutando na porta TCP {PORT}")
+        server.serve_forever()
+
+
+if __name__ == "__main__":
+    main()
