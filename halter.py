@@ -18,26 +18,29 @@ log = get_viemar_logger("log", "halter", logging.DEBUG, logging.INFO)
 
 class ServerHandler(socketserver.StreamRequestHandler):
     def handle(self):
-        self.write_print(
-            f"Servidor Halter Versao {VERSION} - Pronto para receber uma linha"
-        )
-        self.write_print(f"Conexao recebida de {self.client_address[0]}")
+        try:
+            self.write_print(
+                f"Servidor Halter Versao {VERSION} - Pronto para receber uma linha"
+            )
+            self.write_print(f"Conexao recebida de {self.client_address[0]}")
 
-        if self.client_address[0] not in ALLOWED_SOURCES:
-            self.write_print("Cliente nao permitido")
-            return
+            if self.client_address[0] not in ALLOWED_SOURCES:
+                self.write_print("Cliente nao permitido")
+                return
 
-        line = self.read()
-        self.write_print(f"Linha recebida: {line}")
+            line = self.read()
+            self.write_print(f"Linha recebida: {line}")
 
-        msg = "Linha aceita. Executar halt"
-        if line != SECRET:
-            self.write_print("Linha rejeitada")
-            return
+            msg = "Linha aceita. Executar halt"
+            if line != SECRET:
+                self.write_print("Linha rejeitada")
+                return
 
-        self.write_print(msg)
-        self.halt()
-        self.write_print("Halt disparado")
+            self.write_print(msg)
+            self.halt()
+            self.write_print("Halt disparado")
+        except Exception as e:
+            self.write_print(e)
 
     def read(self):
         return self.rfile.readline().decode("utf-8").strip()
