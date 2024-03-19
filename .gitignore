@@ -3,3 +3,4 @@
 *.log
 *.bin
 *.key
+__pycache__
