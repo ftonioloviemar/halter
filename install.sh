@@ -56,7 +56,19 @@ case "$so" in
         ./config_venv.sh
         ./install_service_systemd.sh
         ;;
+    *"Linux xcp"* )
+        echo "el9"
+        ./install_el789.sh
+        ./config_venv.sh
+        ./install_service_systemd.sh
+        ;;
+    *"Linux xen"* )
+        echo "el9"
+        ./install_el789.sh
+        ./config_venv.sh
+        ./install_service_systemd.sh
+        ;;
     * )
-        echo "Sistema operacional não previsto"
+        echo "Sistema operacional não previsto: $so"
         ;;
 esac
