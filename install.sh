@@ -56,13 +56,13 @@ case "$so" in
         ./config_venv.sh
         ./install_service_systemd.sh
         ;;
-    *"Linux xcp"* )
+    *"linux xcp"* )
         echo "el9"
         ./install_el789.sh
         ./config_venv.sh
         ./install_service_systemd.sh
         ;;
-    *"Linux xen"* )
+    *"linux xen"* )
         echo "el9"
         ./install_el789.sh
         ./config_venv.sh
