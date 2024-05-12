@@ -145,10 +145,11 @@ class ServerHandler(socketserver.StreamRequestHandler):
             host = host.replace("/rest/v0/hosts/", "")
             # desligar host
             self.write_print(f"desligar host {host}")
-            if host == "369eb766-2aa2-40b2-a8f7-ba6dfbdd4ce3":
-                os.system(f"xo-cli host.emergencyShutdownHost host={host}")
-            else:
-                self.write_print("pular, teste")
+
+            # if host == "369eb766-2aa2-40b2-a8f7-ba6dfbdd4ce3":
+            os.system(f"xo-cli host.emergencyShutdownHost host={host}")
+            # else:
+            #     self.write_print("pular, teste")
 
 
 class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
