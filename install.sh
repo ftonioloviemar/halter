@@ -10,6 +10,12 @@ case "$so" in
         ./config_venv.sh
         ./install_service_systemd.sh
         ;;
+    *"ubuntu"* )
+        echo "ubuntu"
+        # presumir que já tem python 3.6 ou superior instalado
+        ./config_venv.sh
+        ./install_service_systemd.sh
+        ;;
     *"truenas"* )
         echo "truenas"
         ./config_venv.sh
